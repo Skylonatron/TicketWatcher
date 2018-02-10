@@ -10,6 +10,10 @@ class EventSearch extends React.Component {
 
   }
 
+  componentDidMount() {
+    
+  }
+
   handleChange(event){
     this.setState({search: event.target.value});
   }
@@ -50,15 +54,15 @@ class EventSearch extends React.Component {
   }
 
   render () {
+    console.log("loading")
     var events = (this.state.events.length == 0) ? null : this.parseEvents(this.state.events.events)
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Event:
-            <input type="text" value={this.state.search} onChange={this.handleChange} />
-          </label>
-          <input type="submit" value="Submit" />
+        <form onSubmit={this.handleSubmit} className="search-bar-container">
+            <input type="text" value={this.state.search} onChange={this.handleChange} className="search-bar" />
+            <button type="submit" className="search-bar-submit">
+              <i className="material-icons search-bar-submit-image">search</i>
+            </button>
         </form>
         {events}
       </div>
