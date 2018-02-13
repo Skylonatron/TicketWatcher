@@ -29,6 +29,27 @@ module Api::Stubhub
 
   end
 
+  def get_event(id)
+    uri = URI.parse("https://api.stubhub.com/search/catalog/events/v3/")
+
+    params = {
+               id: id
+             }
+
+    uri.query = URI.encode_www_form(params)
+
+    http = Net::HTTP.new(uri.host, uri.port)
+
+    http.use_ssl = true
+    request = Net::HTTP::Get.new(uri.request_uri)
+    request['Content-Type'] = 'application/json'
+    request['Authorization'] = "Bearer #{application_token}"
+
+    res = http.request(request)
+
+    JSON.parse res.body
+  end
+
   def get_lowest_price(eventid)
     uri = URI.parse("https://api.stubhub.com/search/inventory/v2")
     params = { eventid: eventid, sort: "currentprice asc" }

@@ -1,9 +1,12 @@
 import React from "react"
 import PropTypes from "prop-types"
+import EventListing from './EventListing'
+
+
 class EventSearch extends React.Component {
   constructor(props){
     super(props);
-    this.state = {search: '', events: ''};
+    this.state = {search: '', events: '', loading: false};
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -19,12 +22,13 @@ class EventSearch extends React.Component {
   }
 
   handleSubmit(event) {
+    this.setState({loading: true})
     $.ajax({
       method: 'GET',
       url: "/get_events?event=" + this.state.search,
       context: this,
       success: function(data) {
-        console.log(data)
+        this.setState( {loading: false} );
         this.setState( {events: data} );
       },
       error: function(error) { 
@@ -43,27 +47,26 @@ class EventSearch extends React.Component {
     else{
       var parsedEvents = events.map((event) => {
         return(
-          <div>
-            Description: {event.description}
-          </div>
+          <EventListing name={event.name} date={event.eventDateLocal} venue={event.venue} id={event.id}/>
         )
       })
     }
 
-    return parsedEvents
+    return <div className="events-container col-lg-offset-2 col-lg-8 col-md-offset-1 col-md-10 no-pad"> {parsedEvents} </div>
   }
 
   render () {
-    console.log("loading")
+    var loading = this.state.loading ? <div class="loader col-lg-offset-2 col-lg-8 col-md-offset-1 col-md-10"></div> : null ;
     var events = (this.state.events.length == 0) ? null : this.parseEvents(this.state.events.events)
     return (
       <div>
         <form onSubmit={this.handleSubmit} className="search-bar-container">
-            <input type="text" value={this.state.search} onChange={this.handleChange} className="search-bar" />
+            <input type="text" value={this.state.search} placeholder="Search for events" onChange={this.handleChange} className="search-bar" />
             <button type="submit" className="search-bar-submit">
               <i className="material-icons search-bar-submit-image">search</i>
             </button>
         </form>
+        {loading}
         {events}
       </div>
     );

@@ -1,4 +1,5 @@
 module StubhubApi
+  include ApplicationHelper
 
   require 'net/http'
   require 'uri'
@@ -42,9 +43,11 @@ module StubhubApi
 
     response = JSON.parse res.body
 
-    listing = response["listing"][0]
+    puts response
 
-    return { current_price: listing["currentPrice"]["amount"], listing_price: listing["listingPrice"]["amount"] }
+    listing = dig_hash(response, ["listing"])&.first
+
+    return listing ? { current_price: listing["currentPrice"]["amount"], listing_price: listing["listingPrice"]["amount"] } : nil
 
   end
 

@@ -1,7 +1,9 @@
 class EventsController < ApplicationController
-  include StubhubApi
+  # write a test going to index and show page
 
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  include Api::Stubhub
+
+  before_action :set_event, only: []
 
   # GET /events
   # GET /events.json
@@ -12,6 +14,18 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+    unless event_id = params[:id]
+      redirect_to root_path
+    end
+
+    unless @event = Event.find_by(event_id: event_id)
+      event_metadata = get_event(event_id)["events"]&.first
+      @event = Event.create(name: event_metadata["name"], event_id: event_id, metadata: event_metadata&.to_json)
+    end
+
+    price = @event.get_price
+    @event.new_price(price)
+
   end
 
   # GET /events/new

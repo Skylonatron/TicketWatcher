@@ -1,9 +1,12 @@
-<p id="notice"><%= notice %></p>
+<%#= link_to 'Back', events_path %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @event.name %>
-</p>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+<%= content_tag :div, class: "events-container col-lg-offset-2 col-lg-8 col-md-offset-1 col-md-10 no-pad" do %>
+  <%= content_tag :div, class: "event-image-trim" do %>
+    <%= image_tag @event.metadata_hash["imageUrl"], class: "event-image" %>
+  <% end %>
+  <%= content_tag :div, class: "events-container-info" do %>
+    <%= content_tag :div do @event.name end %>
+  <% end %>
+  <%#= @event.metadata_hash %>
+<% end %>
