@@ -1,0 +1,64 @@
+
+
+<%= content_tag :div, class: "overflow" do %>
+  
+  <%= content_tag :div, class: "col-sm-4 nmnp" do %>
+    <%= content_tag :div, class: "block-3 blue overflow-scroll" do %>
+      <%= content_tag :div, class: "event-information" do %>
+        <%= @event.metadata_hash.each do |key, value| %>
+          <% if value.class == String %>
+            <%= "#{key}: #{value}" %>
+            <br/>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <%= content_tag :div, class: "col-sm-4 nmnp" do %> 
+      <%= react_component("EventWatch") %>
+
+  <% end %>
+
+  <%= content_tag :div, class: "col-sm-4 nmnp" do %>
+    <%= content_tag :div, class: "block-1 blue" do %>
+      <%= content_tag :div, class: "event-current-price-title", align: "center" do %>
+        Current Price
+      <% end %>
+      <%= content_tag :div, class: "event-current-price-amount", align: "center" do %>
+        <%= "$#{@event.get_most_recent_price&.current.to_s}" %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <%= content_tag :div, class: "col-sm-4 nmnp" do %>
+    <%= content_tag :div, class: "block-1-1 blue" do %>
+      <%= content_tag :div, class: "event-current-price-title", align: "center" do %>
+        Listing Price
+      <% end %>
+      <%= content_tag :div, class: "event-current-price-amount", align: "center" do %>
+        <%= "$#{@event.get_most_recent_price&.listing.to_s}" %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <%= content_tag :div, class: "col-sm-8 nmnp" do %>
+    <%= content_tag :div, class: "block-1-1 blue" do %>
+      <%= line_chart @event.graph_prices, min: nil, max: nil, adapter: "google", 
+        height: '100%', width: '100%',
+        library: {
+          title: "Prices Over Time",
+          # titleTextStyle: { color: "white" },
+          chartArea:{left:10,right:10,height:'80%',width:'80%'},
+          pointSize: 0, 
+          animation: { easing: 'easeOutQuad' }, 
+          # backgroundColor: "rgb(35,162,255)", 
+          # colors: ['#ffffff'],
+          # vAxis: {textStyle: { color: "#ffffff" }},
+          # hAxis: {textStyle: { color: "#ffffff" }},
+        }
+      %>
+    <% end %>
+  <% end %>
+
+<% end %>

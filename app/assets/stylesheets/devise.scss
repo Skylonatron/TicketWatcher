@@ -1,0 +1,27 @@
+.user-field{
+  border: 0px;
+
+  &:focus {
+    outline: none;
+  } 
+}
+
+.user-icons{
+  font-size: 16px;
+  vertical-align: text-bottom;
+  margin-bottom: 0px;
+}
+
+.user-field-container{
+  border-bottom: 1px solid #d1d3d6;
+  width: 200px;
+  font-size: 14px;
+}
+
+.user-container{
+  padding: 20px;
+  border-color: #d1d3d6;
+  border-style: solid;
+  border-width: 0.25px 0.25px 0.25px 0.25px;
+  background-color: white;
+}

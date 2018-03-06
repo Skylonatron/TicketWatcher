@@ -1,3 +1,19 @@
 <nav class="navbar navbar-inverse navbar-static-top navbar-color">
-  <a class="navbar-brand" href=<%= root_path %>>Ticket Watcher</a>
+    <a class="navbar-brand" href=<%= root_path %>>Ticket Watcher</a>
+    <div class="navbar-right-container">
+      <ul class="nav navbar-nav">
+        <% if user_signed_in? %>
+          <%= content_tag :li do %>
+            <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
+          <% end %>
+        <% else %>
+          <%= content_tag :li do %>
+            <%= link_to "Sign Up", new_user_registration_path %>
+          <% end %>
+          <%= content_tag :li do %>
+            <%= link_to "Log In", user_session_path %>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
 </nav>

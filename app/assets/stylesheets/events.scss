@@ -98,8 +98,99 @@
 }
 
 .events-container-info{
+  padding: 20px;
+}
+
+.event-title{
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
+  background: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-right: 5px;
+  margin-left: 5px;
+  margin-bottom: 2px;
+  border-radius: 3px;
   padding: 10px;
 }
+
+.event-title .back{
+  background: black;
+}
+
+.event-current-price-title{
+  color: black;
+  font-size: 35px;
+  font-weight: bold;
+  padding-top: 25px;
+  padding-bottom: 50px;
+  text-decoration: underline;
+}
+
+.event-alert-image{
+  text-align: center;
+  font-size: 100px;
+}
+
+
+.overflow-scroll{
+  overflow: scroll;
+}
+
+.event-information{
+  color: black;
+  padding: 4px;
+}
+
+.event-current-price-amount{
+  color: black;
+  font-size: 60px;
+}
+
+.blue{
+  background: white;
+  border-radius: 3px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  color: black;
+}
+
+.block-3{
+  height: 540px;
+  margin: 5px;
+}
+
+.block-2{
+  height: 360px;
+  margin: 5px;
+}
+
+.block-1{
+  height: 180px;
+  margin: 5px;
+}
+
+.block-1-1{
+  height: 170px;
+  margin: 5px;
+}
+
+.flip-div{
+  height: 100% !important;
+}
+
+.flip-div-back{
+  height: 100% !important;
+  top: 0;
+  left: 0; 
+}
+
+.event-watch-field-container{
+  border-bottom: 1px solid #d1d3d6;
+  margin-right: 20%;
+  margin-left: 20%;
+  font-size: 14px;
+}
+
 
 
 

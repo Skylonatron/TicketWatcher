@@ -1,12 +1,17 @@
 <%#= link_to 'Back', events_path %>
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
 
-
-<%= content_tag :div, class: "events-container col-lg-offset-2 col-lg-8 col-md-offset-1 col-md-10 no-pad" do %>
-  <%= content_tag :div, class: "event-image-trim" do %>
-    <%= image_tag @event.metadata_hash["imageUrl"], class: "event-image" %>
+<div>
+  <%= content_tag :div, class: "col-lg-offset-2 col-lg-8 col-md-offset-1 col-md-10 no-pad" do %>
+    <%= content_tag :div, class: "event-image-trim" do %>
+      <%= image_tag @event.metadata_hash["imageUrl"], class: "event-image" %>
+    <% end if false %>
+    <%= content_tag :div do %>
+      <%= content_tag :div, class: "event-title", align: 'center' do @event.name end %>
+      <%= render 'event_info_block' %>
+      <%#= line_chart @event.graph_prices, min: nil, max: nil, adapter: "google", 
+          library: {pointSize: 0, animation: { easing: 'easeOutQuad' }} %>
+    <% end %>
   <% end %>
-  <%= content_tag :div, class: "events-container-info" do %>
-    <%= content_tag :div do @event.name end %>
-  <% end %>
-  <%#= @event.metadata_hash %>
-<% end %>
+</div>

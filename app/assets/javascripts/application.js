@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require chartkick
 //= require bootstrap-sprockets
 //= require rails-ujs
 //= require_tree .

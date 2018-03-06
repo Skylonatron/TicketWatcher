@@ -11,6 +11,10 @@
   background-color: #091540;
 }
 
+.navbar-right-container{
+  float: right;
+}
+
 .nmnp{
   margin: 0px;
   padding: 0px;
@@ -18,4 +22,36 @@
 
 .no-pad{
   padding: 0px;
+}
+
+.inline-block{
+  display: inline;
+}
+
+.align-center{
+  text-align: center;
+}
+
+.display-none{
+  display: none;
+}
+
+.display-block{
+  display: block;
+}
+
+.overflow-auto{
+  overflow: auto;
+}
+
+.fill-parent{
+  height: 100%;
+}
+
+.relative{
+  position: relative !important;
+}
+
+.absolute{
+  position: absolute !important;
 }

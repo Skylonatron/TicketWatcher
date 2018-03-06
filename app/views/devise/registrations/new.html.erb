@@ -1,0 +1,30 @@
+<%= devise_error_messages! %>
+
+<div class="user-container col-lg-offset-3 col-lg-6 col-md-offset-1 col-md-10" align=center>
+
+  <h2>Sign up</h2>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+    <div class="field user-field-container">
+      <i class="material-icons user-icons">email</i>
+      <%= f.email_field :email, class: "user-field", placeholder: "Email" %>
+    </div>
+
+    <div class="field user-field-container">
+      <i class="material-icons user-icons">vpn_key</i>
+      <%= f.password_field :password, class: "user-field", autocomplete: "off", placeholder: "Password" %>
+    </div>
+
+    <div class="field user-field-container">
+      <i class="material-icons user-icons">vpn_key</i>
+      <%= f.password_field :password_confirmation, class: "user-field", autocomplete: "off", placeholder: "Confirm Password" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Sign up" %>
+    </div>
+  <% end %>
+
+  <%#= render "devise/shared/links" %>
+</div>
